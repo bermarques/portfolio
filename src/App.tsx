@@ -53,7 +53,7 @@ function App() {
       </h1>
       {themeLoaded && (
         <ThemeProvider theme={selectedTheme}>
-          <GlobalStyle />
+          <GlobalStyle theme={selectedTheme} />
           <themeContext.Provider value={themeSwitcher}>
             <Terminal />
           </themeContext.Provider>
