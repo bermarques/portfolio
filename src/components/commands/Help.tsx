@@ -7,11 +7,13 @@ import {
 } from "../styles/Help.styled";
 import { commands } from "../Terminal";
 import { generateTabs } from "../../utils/funcs";
+import { useTranslation } from "react-i18next";
 
 const Help: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <HelpWrapper data-testid="help">
-      {commands.map(({ cmd, desc, tab }) => (
+      {commands(t).map(({ cmd, desc, tab }) => (
         <CmdList key={cmd}>
           <Cmd>{cmd}</Cmd>
           {generateTabs(tab)}
@@ -19,9 +21,15 @@ const Help: React.FC = () => {
         </CmdList>
       ))}
       <KeyContainer>
-        <div>Tab or Ctrl + i&nbsp; =&gt; autocompletes the command</div>
-        <div>Up Arrow {generateTabs(5)} =&gt; go back to previous command</div>
-        <div>Ctrl + l {generateTabs(5)} =&gt; clear the terminal</div>
+        <div>
+          {t("help.tab1")}&nbsp; =&gt; {t("help.tab2")}
+        </div>
+        <div>
+          {t("help.up1")} &nbsp;&nbsp; =&gt; {t("help.up2")}
+        </div>
+        <div>
+          {t("help.ctrl1")} {generateTabs(5)} =&gt; {t("help.ctrl2")}
+        </div>
       </KeyContainer>
     </HelpWrapper>
   );

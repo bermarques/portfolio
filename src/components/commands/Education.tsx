@@ -1,11 +1,15 @@
+import { useTranslation } from "react-i18next";
 import { EduIntro, EduList } from "../styles/Education.styled";
 import { Wrapper } from "../styles/Output.styled";
+import { TFunction } from "i18next";
 
 const Education: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Wrapper data-testid="education">
-      <EduIntro>Here is my education background!</EduIntro>
-      {eduBg.map(({ title, desc }) => (
+      <EduIntro>{t("education.intro")}</EduIntro>
+      {eduBg(t).map(({ title, desc }) => (
         <EduList key={title}>
           <div className="title">{title}</div>
           <div className="desc">{desc}</div>
@@ -15,18 +19,10 @@ const Education: React.FC = () => {
   );
 };
 
-const eduBg = [
+const eduBg = (t: TFunction<"translation", undefined>) => [
   {
-    title: "B.Sc (Hons) in Computing",
-    desc: "Edinburgh Napier University | 2018 ~ 2019",
-  },
-  {
-    title: "HND in Computing & System Development",
-    desc: "Info Myanmar University | 2016 - 2018",
-  },
-  {
-    title: "IELTS 6.5",
-    desc: "British Council Myanmar | 2017",
+    title: t("education.title1"),
+    desc: t("education.desc1"),
   },
 ];
 

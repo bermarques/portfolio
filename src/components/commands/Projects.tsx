@@ -12,9 +12,11 @@ import {
 } from "../styles/Projects.styled";
 import { termContext } from "../Terminal";
 import Usage from "../Usage";
+import { useTranslation } from "react-i18next";
 
 const Projects: React.FC = () => {
   const { arg, history, rerender } = useContext(termContext);
+  const { t } = useTranslation();
 
   const currentCommand = getCurrentCmdArry(history);
 
@@ -37,8 +39,8 @@ const Projects: React.FC = () => {
   ) : (
     <div data-testid="projects">
       <ProjectsIntro>
-        “Talk is cheap. Show me the code”? I got you. <br />
-        Here are some of my projects you shouldn't misss
+        {t("projects.quote")} <br />
+        {t("projects.text")}
       </ProjectsIntro>
       {projects.map(({ id, title, desc }) => (
         <ProjectContainer key={id}>

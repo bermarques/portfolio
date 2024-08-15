@@ -9,9 +9,11 @@ import {
 } from "../../utils/funcs";
 import { termContext } from "../Terminal";
 import Usage from "../Usage";
+import { useTranslation } from "react-i18next";
 
 const Socials: React.FC = () => {
   const { arg, history, rerender } = useContext(termContext);
+  const { t } = useTranslation();
 
   const currentCommand = getCurrentCmdArry(history);
 
@@ -33,7 +35,7 @@ const Socials: React.FC = () => {
     checkArg()
   ) : (
     <HelpWrapper data-testid="socials">
-      <ProjectsIntro>Here are my social links</ProjectsIntro>
+      <ProjectsIntro>{t("socials.intro")}</ProjectsIntro>
       {socials.map(({ id, title, url, tab }) => (
         <CmdList key={title}>
           <Cmd>{`${id}. ${title}`}</Cmd>

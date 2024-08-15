@@ -14,6 +14,7 @@ import Themes from "./commands/Themes";
 import { OutputContainer, UsageDiv } from "./styles/Output.styled";
 import { termContext } from "./Terminal";
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   index: number;
@@ -22,11 +23,16 @@ type Props = {
 
 const Output: React.FC<Props> = ({ index, cmd }) => {
   const { arg } = useContext(termContext);
+  const { t } = useTranslation();
 
   const specialCmds = ["projects", "socials", "themes", "echo"];
 
   if (!specialCmds.includes(cmd) && arg.length > 0)
-    return <UsageDiv data-testid="usage-output">Usage: {cmd}</UsageDiv>;
+    return (
+      <UsageDiv data-testid="usage-output">
+        {t("usage")}: {cmd}
+      </UsageDiv>
+    );
 
   return (
     <OutputContainer data-testid={index === 0 ? "latest-output" : null}>

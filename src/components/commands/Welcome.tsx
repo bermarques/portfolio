@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   Cmd,
   HeroContainer,
@@ -9,6 +10,8 @@ import {
 } from "../styles/Welcome.styled";
 
 const Welcome: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <HeroContainer data-testid="welcome">
       <div className="info-section">
@@ -38,10 +41,10 @@ const Welcome: React.FC = () => {
             `}
           </PreNameMobile>
         </PreWrapper>
-        <div>Welcome to my terminal portfolio.</div>
+        <div>{t("title")}</div>
         <Seperator>----</Seperator>
         <div>
-          For a list of available commands, type `<Cmd>help</Cmd>`.
+          {t("subTitle")} `<Cmd>help</Cmd>`.
         </div>
       </div>
       <div className="illu-section">

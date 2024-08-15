@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { UsageDiv } from "./styles/Output.styled";
 
 type Props = {
@@ -13,10 +14,11 @@ const arg = {
 
 const Usage: React.FC<Props> = ({ cmd, marginY = false }) => {
   const action = cmd === "themes" ? "set" : "go";
+  const { t } = useTranslation();
   return (
     <UsageDiv data-testid={`${cmd}-invalid-arg`} marginY={marginY}>
-      Usage: {cmd} {action} &#60;{arg[cmd].placeholder}&#62; <br />
-      eg: {cmd} {action} {arg[cmd].example}
+      {t("usage")}: {cmd} {action} &#60;{arg[cmd].placeholder}&#62; <br />
+      {t("eg")}: {cmd} {action} {arg[cmd].example}
     </UsageDiv>
   );
 };

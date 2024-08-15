@@ -19,28 +19,24 @@ import {
   Wrapper,
 } from "./styles/Terminal.styled";
 import { argTab } from "../utils/funcs";
+import { TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
 
-type Command = {
-  cmd: string;
-  desc: string;
-  tab: number;
-}[];
-
-export const commands: Command = [
-  { cmd: "about", desc: "about Bernard Marques", tab: 8 },
-  { cmd: "clear", desc: "clear the terminal", tab: 8 },
-  { cmd: "echo", desc: "print out anything", tab: 9 },
-  { cmd: "education", desc: "my education background", tab: 4 },
-  { cmd: "email", desc: "send an email to me", tab: 8 },
-  { cmd: "gui", desc: "go to my portfolio in GUI", tab: 10 },
-  { cmd: "help", desc: "check available commands", tab: 9 },
-  { cmd: "history", desc: "view command history", tab: 6 },
-  { cmd: "projects", desc: "view projects that I've coded", tab: 5 },
-  { cmd: "pwd", desc: "print current working directory", tab: 10 },
-  { cmd: "socials", desc: "check out my social accounts", tab: 6 },
-  { cmd: "themes", desc: "check available themes", tab: 7 },
-  { cmd: "welcome", desc: "display hero section", tab: 6 },
-  { cmd: "whoami", desc: "about current user", tab: 7 },
+export const commands = (t: TFunction<"translation", undefined>) => [
+  { cmd: "about", desc: t("help.cmd.about"), tab: 8 },
+  { cmd: "clear", desc: t("help.cmd.clear"), tab: 8 },
+  { cmd: "echo", desc: t("help.cmd.echo"), tab: 9 },
+  { cmd: "education", desc: t("help.cmd.education"), tab: 4 },
+  { cmd: "email", desc: t("help.cmd.email"), tab: 8 },
+  { cmd: "gui", desc: t("help.cmd.gui"), tab: 10 },
+  { cmd: "help", desc: t("help.cmd.help"), tab: 9 },
+  { cmd: "history", desc: t("help.cmd.history"), tab: 6 },
+  { cmd: "projects", desc: t("help.cmd.projects"), tab: 5 },
+  { cmd: "pwd", desc: t("help.cmd.pwd"), tab: 10 },
+  { cmd: "socials", desc: t("help.cmd.socials"), tab: 6 },
+  { cmd: "themes", desc: t("help.cmd.themes"), tab: 7 },
+  { cmd: "welcome", desc: t("help.cmd.welcome"), tab: 6 },
+  { cmd: "whoami", desc: t("help.cmd.whoami"), tab: 7 },
 ];
 
 type Term = {
@@ -61,6 +57,7 @@ export const termContext = createContext<Term>({
 const Terminal = () => {
   const containerRef = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   const [inputVal, setInputVal] = useState("");
   const [cmdHistory, setCmdHistory] = useState<string[]>(["welcome"]);
@@ -110,7 +107,7 @@ const Terminal = () => {
       if (!inputVal) return;
 
       let hintsCmds: string[] = [];
-      commands.forEach(({ cmd }) => {
+      commands(t).forEach(({ cmd }) => {
         if (_.startsWith(cmd, inputVal)) {
           hintsCmds = [...hintsCmds, cmd];
         }
@@ -200,7 +197,7 @@ const Terminal = () => {
 
       {cmdHistory.map((cmdH, index) => {
         const commandArray = _.split(_.trim(cmdH), " ");
-        const validCommand = _.find(commands, { cmd: commandArray[0] });
+        const validCommand = _.find(commands(t), { cmd: commandArray[0] });
         const contextValue = {
           arg: _.drop(commandArray),
           history: cmdHistory,
