@@ -10,6 +10,10 @@ const Resume: React.FC = () => {
       |{" "}
       <a href="/resume_en.pdf" download className="link">
         English
+      </a>{" "}
+      |{" "}
+      <a href="/resume_es.pdf" download className="link">
+        Español
       </a>
     </ResumeWrapper>
   );
