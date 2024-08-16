@@ -30,6 +30,7 @@ const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
     font-weight: 500;
     background-color: ${({ theme }) => theme.colors?.body};
     color: ${({ theme }) => theme.colors?.text[100]};
+    min-height: 100vh;
   }
 
   /* ===== Custom Scroll Bar ===== */

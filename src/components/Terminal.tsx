@@ -10,6 +10,7 @@ import Output from "./Output";
 import TermInfo from "./TermInfo";
 import {
   CmdNotFound,
+  Container,
   Empty,
   Form,
   Hints,
@@ -21,6 +22,7 @@ import {
 import { argTab } from "../utils/funcs";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
+import Header from "./Header";
 
 export const commands = (t: TFunction<"translation", undefined>) => [
   { cmd: "about", desc: t("help.cmd.about"), tab: 8 },
@@ -169,67 +171,70 @@ const Terminal = () => {
   }, [inputRef, inputVal, pointer]);
 
   return (
-    <Wrapper data-testid="terminal-wrapper" ref={containerRef}>
-      {hints.length > 1 && (
-        <div>
-          {hints.map((hCmd) => (
-            <Hints key={hCmd}>{hCmd}</Hints>
-          ))}
-        </div>
-      )}
-      <Form onSubmit={handleSubmit}>
-        <label htmlFor="terminal-input">
-          <TermInfo /> <MobileBr />
-          <MobileSpan>&#62;</MobileSpan>
-        </label>
-        <Input
-          title="terminal-input"
-          type="text"
-          id="terminal-input"
-          autoComplete="off"
-          spellCheck="false"
-          autoFocus
-          autoCapitalize="off"
-          ref={inputRef}
-          value={inputVal}
-          onKeyDown={handleKeyDown}
-          onChange={handleChange}
-        />
-      </Form>
-
-      {cmdHistory.map((cmdH, index) => {
-        const commandArray = _.split(_.trim(cmdH), " ");
-        const validCommand = _.find(commands(t), { cmd: commandArray[0] });
-        const contextValue = {
-          arg: _.drop(commandArray),
-          history: cmdHistory,
-          rerender,
-          index,
-          clearHistory,
-        };
-        return (
-          <div key={_.uniqueId(`${cmdH}_`)}>
-            <div>
-              <TermInfo />
-              <MobileBr />
-              <MobileSpan>&#62;</MobileSpan>
-              <span data-testid="input-command">{cmdH}</span>
-            </div>
-            {validCommand ? (
-              <termContext.Provider value={contextValue}>
-                <Output index={index} cmd={commandArray[0]} />
-              </termContext.Provider>
-            ) : cmdH === "" ? (
-              <Empty />
-            ) : (
-              <CmdNotFound data-testid={`not-found-${index}`}>
-                command not found: {cmdH}
-              </CmdNotFound>
-            )}
+    <Container>
+      <Header />
+      <Wrapper data-testid="terminal-wrapper" ref={containerRef}>
+        {hints.length > 1 && (
+          <div>
+            {hints.map((hCmd) => (
+              <Hints key={hCmd}>{hCmd}</Hints>
+            ))}
           </div>
-        );
-      })}
-    </Wrapper>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <label htmlFor="terminal-input">
+            <TermInfo /> <MobileBr />
+            <MobileSpan>&#62;</MobileSpan>
+          </label>
+          <Input
+            title="terminal-input"
+            type="text"
+            id="terminal-input"
+            autoComplete="off"
+            spellCheck="false"
+            autoFocus
+            autoCapitalize="off"
+            ref={inputRef}
+            value={inputVal}
+            onKeyDown={handleKeyDown}
+            onChange={handleChange}
+          />
+        </Form>
+
+        {cmdHistory.map((cmdH, index) => {
+          const commandArray = _.split(_.trim(cmdH), " ");
+          const validCommand = _.find(commands(t), { cmd: commandArray[0] });
+          const contextValue = {
+            arg: _.drop(commandArray),
+            history: cmdHistory,
+            rerender,
+            index,
+            clearHistory,
+          };
+          return (
+            <div key={_.uniqueId(`${cmdH}_`)}>
+              <div>
+                <TermInfo />
+                <MobileBr />
+                <MobileSpan>&#62;</MobileSpan>
+                <span data-testid="input-command">{cmdH}</span>
+              </div>
+              {validCommand ? (
+                <termContext.Provider value={contextValue}>
+                  <Output index={index} cmd={commandArray[0]} />
+                </termContext.Provider>
+              ) : cmdH === "" ? (
+                <Empty />
+              ) : (
+                <CmdNotFound data-testid={`not-found-${index}`}>
+                  command not found: {cmdH}
+                </CmdNotFound>
+              )}
+            </div>
+          );
+        })}
+      </Wrapper>
+    </Container>
   );
 };
 
