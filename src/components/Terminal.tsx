@@ -26,6 +26,7 @@ export const commands = (t: TFunction<"translation", undefined>) => [
   { cmd: "about", desc: t("help.cmd.about"), tab: 8 },
   { cmd: "clear", desc: t("help.cmd.clear"), tab: 8 },
   { cmd: "echo", desc: t("help.cmd.echo"), tab: 9 },
+  { cmd: "experience", desc: t("help.cmd.experience"), tab: 3 },
   { cmd: "education", desc: t("help.cmd.education"), tab: 4 },
   { cmd: "email", desc: t("help.cmd.email"), tab: 8 },
   { cmd: "gui", desc: t("help.cmd.gui"), tab: 10 },

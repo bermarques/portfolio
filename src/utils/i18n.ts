@@ -25,6 +25,16 @@ i18n
             description2:
               "developing web applications to solve real-life challenges.",
           },
+          experience: {
+            intro: "Here is the list of jobs I had!",
+            title1: "Front-end Developer | 03/2022 - 08/2024",
+            desc1:
+              "Responsible for development and maintenance of main application in React",
+            title2: "Full-stack Developer | 06/2021 - 01/2022",
+            desc2: "Administered the design and start of application",
+            title3: "Front-end Developer | 03/2021 - 06/2021",
+            desc3: "Maintained a MVC system using C# with Razor",
+          },
           education: {
             intro: "Here is my education background!",
             title1: "Software Development",
@@ -78,6 +88,16 @@ i18n
             description2:
               "desenvolver aplicações web que resolvem problemas reais.",
           },
+          experience: {
+            intro: "Aqui está um resumo da minha experiência!",
+            title1: "Desenvolvedor Front-end | 03/2022 - 08/2024",
+            desc1:
+              "Responsável pelo desenvolvimento e manutenção da aplicação principal em React",
+            title2: "Desenvolvedor full stack | 06/2021 - 01/2022",
+            desc2: "Dei início a primeira versão da aplicação",
+            title3: "Desenvolvedor front-end | 03/2021 - 06/2021",
+            desc3: "Manutenção de um sistema MVC usando C# com Razor",
+          },
           education: {
             intro: "Aqui está minha formação acadêmica!",
             title1: "Software Development",
@@ -130,6 +150,16 @@ i18n
             description1: "Me apasiona escribir códigos y",
             description2:
               "desarrollar aplicaciones web que resuelvan desafíos reales.",
+          },
+          experience: {
+            intro: "¡Aquí está la lista de trabajos que he tenido!",
+            title1: "Desarrollador Front-end | 03/2022 - 08/2024",
+            desc1:
+              "Responsable del desarrollo y mantenimiento de la aplicación principal en React",
+            title2: "Desarrollador Full-stack | 06/2021 - 01/2022",
+            desc2: "Administré el design e inicio de la aplicación",
+            title3: "Desarrollador Front-end | 03/2021 - 06/2021",
+            desc3: "Mantuve un sistema MVC usando C# con Razor",
           },
           education: {
             intro: "¡Aquí está mi formación académica!",
