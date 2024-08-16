@@ -118,6 +118,59 @@ i18n
           eg: "exemplo",
         },
       },
+      es: {
+        translation: {
+          title: "Bienvenido a mi portfolio.",
+          subTitle: "Para una lista de comandos disponibles, escribe ",
+          about: {
+            introduction: "Hola, me llamo",
+            text1: "Soy un",
+            role: "desarrollador full-stack,",
+            text2: "y vivo en Brasil.",
+            description1: "Me apasiona escribir códigos y",
+            description2:
+              "desarrollar aplicaciones web que resuelvan desafíos reales.",
+          },
+          education: {
+            intro: "¡Aquí está mi formación académica!",
+            title1: "Software Development",
+            desc1: "Brigham Young University Idaho | 2023 - 2027",
+          },
+          help: {
+            tab1: "Tab o Ctrl + i",
+            tab2: "completa el comando automáticamente",
+            up1: "Flecha hacia arriba",
+            up2: "navega al comando anterior",
+            ctrl1: "Ctrl + l",
+            ctrl2: "limpia el terminal",
+            cmd: {
+              about: "sobre Bernardo Marques",
+              clear: "limpiar el terminal",
+              echo: "imprimir cualquier cosa",
+              education: "mi formación académica",
+              email: "envíame un correo electrónico",
+              gui: "ir a mi portafolio en GUI",
+              help: "ver comandos disponibles",
+              history: "ver historial de comandos",
+              projects: "ver proyectos que he desarrollado",
+              pwd: "mostrar el directorio actual",
+              socials: "ver mis redes sociales",
+              themes: "ver temas disponibles",
+              welcome: "mostrar mensaje de bienvenida",
+              whoami: "sobre el usuario actual",
+            },
+          },
+          projects: {
+            quote: "“Hablar es barato. Muéstrame el código.” Lo tengo.",
+            text: "Aquí están algunos de mis proyectos que no debes perderte.",
+          },
+          socials: {
+            intro: "Aquí están mis redes sociales",
+          },
+          usage: "Uso",
+          eg: "ejemplo",
+        },
+      },
     },
   });
 
