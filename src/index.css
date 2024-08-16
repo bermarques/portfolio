@@ -70,6 +70,10 @@ body {
   color: #fec303;
   margin-top: 0;
 }
+.link {
+  color: #fec303;
+  margin-top: 0;
+}
 #command-input {
   margin-top: 0;
   overflow: hidden;

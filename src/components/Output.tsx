@@ -16,6 +16,7 @@ import { termContext } from "./Terminal";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Experience from "./commands/Experience";
+import Resume from "./commands/Resume";
 
 type Props = {
   index: number;
@@ -50,6 +51,7 @@ const Output: React.FC<Props> = ({ index, cmd }) => {
           history: <History />,
           projects: <Projects />,
           pwd: <GeneralOutput>/home/bernardomarques</GeneralOutput>,
+          resume: <Resume />,
           socials: <Socials />,
           themes: <Themes />,
           welcome: <Welcome />,
