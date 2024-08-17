@@ -61,6 +61,7 @@ export const Title = styled.a`
   user-select: none;
   margin-right: -70px;
   text-decoration: none;
+  color: inherit;
   &:visited {
     color: inherit;
   }
