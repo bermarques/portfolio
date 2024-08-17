@@ -28,9 +28,20 @@ const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
   body {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
-    background-color: ${({ theme }) => theme.colors?.body};
     color: ${({ theme }) => theme.colors?.text[100]};
+    background: ${({ theme }) => theme.colors?.body};
     min-height: 100vh;
+    @media (min-width: 550px) {
+      background-image: url('background-small.jpeg');
+    }
+    @media (min-width: 1800px) {
+      background-image: url('background-large.jpeg');
+    }
+    @media (min-width: 3800px) {
+      background-image: url('background-extra-large.jpeg');
+    }
+    background-size: cover;
+    background-position: center;
   }
 
   /* ===== Custom Scroll Bar ===== */
