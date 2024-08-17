@@ -3,11 +3,30 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   padding: 1.25rem;
   padding-top: 0.75rem;
+  background-color: ${({ theme }) => theme.colors?.body};
 
   display: flex;
   flex-direction: column-reverse;
   max-height: calc(100vh - 2rem);
   overflow-y: auto;
+  @media (min-width: 550px) {
+    height: 475px;
+  }
+`;
+
+export const Container = styled.div`
+  @media (min-width: 550px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #2c2c2c;
+    margin: 20px;
+    cursor: text;
+  }
 `;
 
 export const CmdNotFound = styled.div`
