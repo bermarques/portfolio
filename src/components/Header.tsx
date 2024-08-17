@@ -1,8 +1,9 @@
-import { Minus, Square, X } from "lucide-react";
+import { Github, Minus, Square, X } from "lucide-react";
 import {
   Actions,
   CloseContainer,
   IconContainer,
+  Title,
   Wrapper,
 } from "./styles/Header.styled";
 
@@ -20,6 +21,11 @@ const Header = () => {
           <X size={12} strokeWidth={3} />
         </CloseContainer>
       </Actions>
+      <Title href="https://github.com/bermarques" target="_blank">
+        <Github size={14} />
+        github.com/bermarques
+      </Title>
+      <div></div>
     </Wrapper>
   );
 };

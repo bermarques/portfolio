@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  @media (max-width: 550px) {
+    display: none;
+  }
+
   display: flex;
   align-items: center;
   text-align: center;
@@ -9,6 +13,7 @@ export const Wrapper = styled.div`
   background-color: #2c2c2c;
   padding: 4px 12px;
   cursor: default;
+  justify-content: space-between;
 `;
 
 export const IconContainer = styled.div`
@@ -45,4 +50,18 @@ export const Actions = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
+`;
+
+export const Title = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  align-self: center;
+  user-select: none;
+  margin-right: -70px;
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 `;
