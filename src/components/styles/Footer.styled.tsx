@@ -5,23 +5,22 @@ export const Wrapper = styled.div`
     display: none;
   }
   box-sizing: border-box;
-  background: #2c2c2c8f;
-  padding: 12px 18px;
+  background: #2c2c2cb3;
+  padding: 12px 4px;
   gap: 12px;
   display: flex;
   align-items: center;
-  text-align: center;
-  height: 70px;
-  min-width: 300px;
+  flex-direction: column;
+  width: 65px;
   position: fixed;
-  bottom: 20px;
-  border-radius: 18px;
+  left: 0;
+  height: 100vh;
 `;
 
 export const ItemContainer = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
+  width: 55px;
+  height: 55px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,12 +28,16 @@ export const ItemContainer = styled.div`
   position: relative;
   cursor: pointer;
 
+  &.pressed {
+    background: #8f8e8e8f !important;
+  }
   &:hover {
-    background: #2c2c2c76;
+    background: #8f8e8e29;
   }
 
   img {
-    height: 40px;
+    user-select: none;
+    height: 45px;
   }
 `;
 
@@ -44,5 +47,5 @@ export const ActiveDot = styled.div`
   border-radius: 50%;
   background: #eb5323;
   position: absolute;
-  bottom: 1px;
+  left: 0;
 `;
