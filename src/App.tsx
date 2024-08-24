@@ -4,6 +4,7 @@ import { DefaultTheme, ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks/useTheme.ts";
 import GlobalStyle from "./components/styles/GlobalStyle";
 import Terminal from "./components/Terminal";
+import Footer from "./components/Footer/index.tsx";
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -56,6 +57,7 @@ function App() {
           <GlobalStyle theme={selectedTheme} />
           <themeContext.Provider value={themeSwitcher}>
             <Terminal />
+            <Footer />
           </themeContext.Provider>
         </ThemeProvider>
       )}
