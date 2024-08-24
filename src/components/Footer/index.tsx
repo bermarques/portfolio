@@ -8,7 +8,9 @@ const Footer = () => {
       <Item
         image="libre-office"
         active={false}
-        onClick={() => window.open("resume_pt.pdf", "_blank", "fullscreen=yes")}
+        onClick={() =>
+          window.open("bernardo_marques_pt.pdf", "_blank", "fullscreen=yes")
+        }
       />
     </Wrapper>
   );
