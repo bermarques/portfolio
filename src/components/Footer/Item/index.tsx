@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { ActiveDot, ItemContainer } from "../../styles/Footer.styled";
 import { IItem } from "./types";
 
-const Item: React.FC<IItem> = ({ image, active }) => {
+const Item: React.FC<IItem> = ({ image, active, onClick }) => {
   const myRef = useRef<HTMLDivElement>(null);
 
   const addPressedClass = (e: Event) => {
@@ -24,7 +24,7 @@ const Item: React.FC<IItem> = ({ image, active }) => {
   }, []);
 
   return (
-    <ItemContainer id="terminal-item" ref={myRef}>
+    <ItemContainer id="terminal-item" ref={myRef} onClick={onClick}>
       <img src={`src/assets/${image}.webp`} alt="Icon" draggable="false" />
       {active && <ActiveDot />}
     </ItemContainer>
