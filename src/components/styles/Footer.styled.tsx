@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { EnumStatus } from "../../contexts/Terminal";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ status: EnumStatus; maximized: boolean }>`
   @media (max-width: 550px) {
     display: none;
   }
@@ -13,6 +14,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 65px;
   position: fixed;
+  ${(props) =>
+    props.status === EnumStatus.OPEN && props.maximized && `position: static;`}
   left: 0;
   height: 100vh;
 `;

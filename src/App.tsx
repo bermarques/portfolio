@@ -16,6 +16,7 @@ function App() {
   const { theme, themeLoaded, setMode } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
   const [terminalStatus, setTerminalStatus] = useState(EnumStatus.OPEN);
+  const [maximizedTerminal, setMaximizedTerminal] = useState(false);
 
   const [cmdHistory, setCmdHistory] = useState<string[]>(["welcome"]);
   const [reRender, setRerender] = useState(false);
@@ -77,10 +78,15 @@ function App() {
           <themeContext.Provider value={themeSwitcher}>
             <termContext.Provider value={termContextValue}>
               <terminalContext.Provider
-                value={{ status: terminalStatus, setStatus: setTerminalStatus }}
+                value={{
+                  status: terminalStatus,
+                  setStatus: setTerminalStatus,
+                  maximized: maximizedTerminal,
+                  setMaximized: setMaximizedTerminal,
+                }}
               >
-                <Terminal />
                 <Footer />
+                <Terminal />
               </terminalContext.Provider>
             </termContext.Provider>
           </themeContext.Provider>

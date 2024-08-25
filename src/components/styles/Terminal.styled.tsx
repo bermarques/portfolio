@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { EnumStatus } from "../../contexts/Terminal";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ maximized: boolean }>`
   padding: 1.25rem;
   padding-top: 0.75rem;
   background-color: ${({ theme }) => theme.colors?.body};
@@ -13,9 +13,12 @@ export const Wrapper = styled.div`
   @media (min-width: 550px) {
     height: 475px;
   }
+  &&& {
+    ${(props) => props.maximized && `height: 100vh;`}
+  }
 `;
 
-export const Container = styled.div<{ status: EnumStatus }>`
+export const Container = styled.div<{ status: EnumStatus; maximized: boolean }>`
   @media (min-width: 550px) {
     display: flex;
     flex-direction: column;
@@ -28,11 +31,19 @@ export const Container = styled.div<{ status: EnumStatus }>`
     margin: 20px;
     cursor: text;
   }
+
   &&& {
     ${(props) =>
       (props.status === EnumStatus.CLOSED ||
         props.status === EnumStatus.MINIMIZED) &&
       "display: none;"}
+    ${(props) =>
+      props.maximized &&
+      `
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+    `}
   }
 `;
 

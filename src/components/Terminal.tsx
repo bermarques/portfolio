@@ -162,9 +162,16 @@ const Terminal = () => {
   }, [inputRef, inputVal, pointer]);
 
   return (
-    <Container status={statusContext.status}>
+    <Container
+      status={statusContext.status}
+      maximized={statusContext.maximized}
+    >
       <Header />
-      <Wrapper data-testid="terminal-wrapper" ref={containerRef}>
+      <Wrapper
+        data-testid="terminal-wrapper"
+        ref={containerRef}
+        maximized={statusContext.maximized}
+      >
         {hints.length > 1 && (
           <div>
             {hints.map((hCmd) => (

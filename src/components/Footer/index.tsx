@@ -4,7 +4,7 @@ import Item from "./Item";
 import { EnumStatus, terminalContext } from "../../contexts/Terminal";
 
 const Footer = () => {
-  const { status, setStatus } = useContext(terminalContext);
+  const { status, setStatus, maximized } = useContext(terminalContext);
 
   const handleTerminal = () => {
     switch (status) {
@@ -20,7 +20,7 @@ const Footer = () => {
     }
   };
   return (
-    <Wrapper>
+    <Wrapper maximized={maximized} status={status}>
       <Item
         image="terminal-icon"
         active={status !== EnumStatus.CLOSED}

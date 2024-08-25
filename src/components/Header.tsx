@@ -11,25 +11,27 @@ import { EnumStatus, terminalContext } from "../contexts/Terminal";
 import { termContext } from "../contexts/Term";
 
 const Header = () => {
-  const context = useContext(terminalContext);
+  const { setStatus, maximized, setMaximized } = useContext(terminalContext);
   const { setHistory } = useContext(termContext);
 
   const handleCloseTerminal = () => {
     setHistory?.(["welcome"]);
-    context.setStatus(EnumStatus.CLOSED);
+    setMaximized(false);
+    setStatus(EnumStatus.CLOSED);
+  };
+
+  const handleResize = () => {
+    setMaximized(!maximized);
   };
 
   return (
     <Wrapper>
       <Actions>
-        <IconContainer onClick={() => context.setStatus(EnumStatus.MINIMIZED)}>
+        <IconContainer onClick={() => setStatus(EnumStatus.MINIMIZED)}>
           <Minus />
         </IconContainer>
-        <IconContainer>
-          <Square
-            size={10}
-            onClick={() => context.setStatus(EnumStatus.MAXIMIZED)}
-          />
+        <IconContainer onClick={handleResize}>
+          <Square size={10} />
         </IconContainer>
         <CloseContainer onClick={handleCloseTerminal}>
           <X size={12} strokeWidth={3} />
