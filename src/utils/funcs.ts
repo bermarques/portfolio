@@ -38,17 +38,17 @@ export const getCurrentCmdArry = (history: string[]) =>
 
 /**
  * Check current render makes redirect
- * @param {boolean} rerender - is submitted or not
+ * @param {boolean} reRender - is submitted or not
  * @param {string[]} currentCommand - current submitted command
  * @param {string} command - the command of the function
  * @returns {boolean} redirect - true | false
  */
 export const checkRedirect = (
-  rerender: boolean,
+  reRender: boolean,
   currentCommand: string[],
   command: string
 ): boolean =>
-  rerender && // is submitted
+  reRender && // is submitted
   currentCommand[0] === command && // current command starts with ('socials'|'projects')
   currentCommand[1] === "go" && // first arg is 'go'
   currentCommand.length > 1 && // current command has arg
@@ -57,17 +57,17 @@ export const checkRedirect = (
 
 /**
  * Check current render makes redirect for theme
- * @param {boolean} rerender - is submitted or not
+ * @param {boolean} reRender - is submitted or not
  * @param {string[]} currentCommand - current submitted command
  * @param {string[]} themes - the command of the function
  * @returns {boolean} redirect - true | false
  */
 export const checkThemeSwitch = (
-  rerender: boolean,
+  reRender: boolean,
   currentCommand: string[],
   themes: string[]
 ): boolean =>
-  rerender && // is submitted
+  reRender && // is submitted
   currentCommand[0] === "themes" && // current command starts with 'themes'
   currentCommand[1] === "set" && // first arg is 'set'
   currentCommand.length > 1 && // current command has arg

@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import _ from "lodash";
-import { termContext } from "../Terminal";
-
+import { termContext } from "../../contexts/Term";
 const Gui: React.FC = () => {
-  const { history, rerender } = useContext(termContext);
+  const { history, reRender } = useContext(termContext);
 
   const currentCommand = _.split(history[0], " ");
 
-  if (rerender && currentCommand[0] === "gui") {
+  if (reRender && currentCommand[0] === "gui") {
     window.open("https://bernardomarques.dev/", "_blank");
   }
 

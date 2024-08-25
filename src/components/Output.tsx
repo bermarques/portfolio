@@ -12,8 +12,6 @@ import Projects from "./commands/Projects";
 import Socials from "./commands/Socials";
 import Themes from "./commands/Themes";
 import { OutputContainer, UsageDiv } from "./styles/Output.styled";
-import { termContext } from "./Terminal";
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Experience from "./commands/Experience";
 import Resume from "./commands/Resume";
@@ -21,10 +19,10 @@ import Resume from "./commands/Resume";
 type Props = {
   index: number;
   cmd: string;
+  arg: string[];
 };
 
-const Output: React.FC<Props> = ({ index, cmd }) => {
-  const { arg } = useContext(termContext);
+const Output: React.FC<Props> = ({ index, cmd, arg }) => {
   const { t } = useTranslation();
 
   const specialCmds = ["projects", "socials", "themes", "echo"];

@@ -1,10 +1,31 @@
+import { useContext } from "react";
 import { Wrapper } from "../styles/Footer.styled";
 import Item from "./Item";
+import { EnumStatus, terminalContext } from "../../contexts/Terminal";
 
 const Footer = () => {
+  const { status, setStatus } = useContext(terminalContext);
+
+  const handleTerminal = () => {
+    switch (status) {
+      case EnumStatus.CLOSED:
+      case EnumStatus.MINIMIZED:
+        setStatus(EnumStatus.OPEN);
+        break;
+      case EnumStatus.OPEN:
+        setStatus(EnumStatus.MINIMIZED);
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <Wrapper>
-      <Item image="terminal-icon" active={true} />
+      <Item
+        image="terminal-icon"
+        active={status !== EnumStatus.CLOSED}
+        onClick={handleTerminal}
+      />
       <Item
         image="libre-office"
         active={false}

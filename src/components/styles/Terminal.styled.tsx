@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { EnumStatus } from "../../contexts/Terminal";
 
 export const Wrapper = styled.div`
   padding: 1.25rem;
@@ -14,7 +15,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ status: EnumStatus }>`
   @media (min-width: 550px) {
     display: flex;
     flex-direction: column;
@@ -26,6 +27,12 @@ export const Container = styled.div`
     border: 1px solid #2c2c2c;
     margin: 20px;
     cursor: text;
+  }
+  &&& {
+    ${(props) =>
+      (props.status === EnumStatus.CLOSED ||
+        props.status === EnumStatus.MINIMIZED) &&
+      "display: none;"}
   }
 `;
 

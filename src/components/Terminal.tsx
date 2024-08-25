@@ -1,6 +1,6 @@
 import React, {
-  createContext,
   useCallback,
+  useContext,
   useEffect,
   useRef,
   useState,
@@ -23,6 +23,8 @@ import { argTab } from "../utils/funcs";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import Header from "./Header";
+import { terminalContext } from "../contexts/Terminal";
+import { termContext } from "../contexts/Term";
 
 export const commands = (t: TFunction<"translation", undefined>) => [
   { cmd: "about", desc: t("help.cmd.about"), tab: 8 },
@@ -43,29 +45,18 @@ export const commands = (t: TFunction<"translation", undefined>) => [
   { cmd: "whoami", desc: t("help.cmd.whoami"), tab: 7 },
 ];
 
-type Term = {
-  arg: string[];
-  history: string[];
-  rerender: boolean;
-  index: number;
-  clearHistory?: () => void;
-};
-
-export const termContext = createContext<Term>({
-  arg: [],
-  history: [],
-  rerender: false,
-  index: 0,
-});
-
 const Terminal = () => {
   const containerRef = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
+  const statusContext = useContext(terminalContext);
+  const {
+    history: cmdHistory,
+    setHistory: setCmdHistory,
+    setRerender,
+  } = useContext(termContext);
 
   const [inputVal, setInputVal] = useState("");
-  const [cmdHistory, setCmdHistory] = useState<string[]>(["welcome"]);
-  const [rerender, setRerender] = useState(false);
   const [hints, setHints] = useState<string[]>([]);
   const [pointer, setPointer] = useState(-1);
 
@@ -171,7 +162,7 @@ const Terminal = () => {
   }, [inputRef, inputVal, pointer]);
 
   return (
-    <Container>
+    <Container status={statusContext.status}>
       <Header />
       <Wrapper data-testid="terminal-wrapper" ref={containerRef}>
         {hints.length > 1 && (
@@ -204,13 +195,7 @@ const Terminal = () => {
         {cmdHistory.map((cmdH, index) => {
           const commandArray = _.split(_.trim(cmdH), " ");
           const validCommand = _.find(commands(t), { cmd: commandArray[0] });
-          const contextValue = {
-            arg: _.drop(commandArray),
-            history: cmdHistory,
-            rerender,
-            index,
-            clearHistory,
-          };
+
           return (
             <div key={_.uniqueId(`${cmdH}_`)}>
               <div>
@@ -220,9 +205,11 @@ const Terminal = () => {
                 <span data-testid="input-command">{cmdH}</span>
               </div>
               {validCommand ? (
-                <termContext.Provider value={contextValue}>
-                  <Output index={index} cmd={commandArray[0]} />
-                </termContext.Provider>
+                <Output
+                  index={index}
+                  cmd={commandArray[0]}
+                  arg={_.drop(commandArray)}
+                />
               ) : cmdH === "" ? (
                 <Empty />
               ) : (

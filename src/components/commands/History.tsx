@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import _ from "lodash";
 import { Wrapper } from "../styles/Output.styled";
-import { termContext } from "../Terminal";
-
+import { termContext } from "../../contexts/Term";
 const History: React.FC = () => {
   const { history, index } = useContext(termContext);
   const currentHistory = _.reverse(_.slice(history, index));

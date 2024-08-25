@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { UsageDiv } from "../styles/Output.styled";
-import { termContext } from "../Terminal";
 import { useTranslation } from "react-i18next";
+import { termContext } from "../../contexts/Term";
 
 const Clear: React.FC = () => {
   const { arg, clearHistory } = useContext(termContext);

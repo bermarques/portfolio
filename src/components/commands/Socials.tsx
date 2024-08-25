@@ -7,24 +7,24 @@ import {
   getCurrentCmdArry,
   isArgInvalid,
 } from "../../utils/funcs";
-import { termContext } from "../Terminal";
+import { termContext } from "../../contexts/Term";
 import Usage from "../Usage";
 import { useTranslation } from "react-i18next";
 
 const Socials: React.FC = () => {
-  const { arg, history, rerender } = useContext(termContext);
+  const { arg, history, reRender } = useContext(termContext);
   const { t } = useTranslation();
 
   const currentCommand = getCurrentCmdArry(history);
 
   useEffect(() => {
-    if (checkRedirect(rerender, currentCommand, "socials")) {
+    if (checkRedirect(reRender, currentCommand, "socials")) {
       socials.forEach(({ id, url }) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         id === parseInt(arg[1]) && window.open(url, "_blank");
       });
     }
-  }, [arg, rerender, currentCommand]);
+  }, [arg, reRender, currentCommand]);
 
   const checkArg = () =>
     isArgInvalid(arg, "go", ["1", "2", "3", "4"]) ? (

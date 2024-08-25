@@ -5,6 +5,8 @@ import { useTheme } from "./hooks/useTheme.ts";
 import GlobalStyle from "./components/styles/GlobalStyle";
 import Terminal from "./components/Terminal";
 import Footer from "./components/Footer/index.tsx";
+import { EnumStatus, terminalContext } from "./contexts/Terminal.tsx";
+import { termContext } from "./contexts/Term.tsx";
 
 export const themeContext = createContext<
   ((switchTheme: DefaultTheme) => void) | null
@@ -13,7 +15,24 @@ export const themeContext = createContext<
 function App() {
   const { theme, themeLoaded, setMode } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
+  const [terminalStatus, setTerminalStatus] = useState(EnumStatus.OPEN);
 
+  const [cmdHistory, setCmdHistory] = useState<string[]>(["welcome"]);
+  const [reRender, setRerender] = useState(false);
+
+  const clearHistory = () => {
+    setCmdHistory([]);
+  };
+
+  const termContextValue = {
+    arg: [],
+    history: cmdHistory,
+    setHistory: setCmdHistory,
+    reRender: reRender,
+    setRerender: setRerender,
+    index: 0,
+    clearHistory: clearHistory,
+  };
   useEffect(() => {
     window.addEventListener(
       "keydown",
@@ -56,8 +75,14 @@ function App() {
         <ThemeProvider theme={selectedTheme}>
           <GlobalStyle theme={selectedTheme} />
           <themeContext.Provider value={themeSwitcher}>
-            <Terminal />
-            <Footer />
+            <termContext.Provider value={termContextValue}>
+              <terminalContext.Provider
+                value={{ status: terminalStatus, setStatus: setTerminalStatus }}
+              >
+                <Terminal />
+                <Footer />
+              </terminalContext.Provider>
+            </termContext.Provider>
           </themeContext.Provider>
         </ThemeProvider>
       )}

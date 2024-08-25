@@ -8,24 +8,24 @@ import {
   getCurrentCmdArry,
   isArgInvalid,
 } from "../../utils/funcs";
-import { termContext } from "../Terminal";
+import { termContext } from "../../contexts/Term";
 import theme from "../styles/themes";
 import Usage from "../Usage";
 
 const myThemes = _.keys(theme);
 
 const Themes: React.FC = () => {
-  const { arg, history, rerender } = useContext(termContext);
+  const { arg, history, reRender } = useContext(termContext);
 
   const themeSwitcher = useContext(themeContext);
 
   const currentCommand = getCurrentCmdArry(history);
 
   useEffect(() => {
-    if (checkThemeSwitch(rerender, currentCommand, myThemes)) {
+    if (checkThemeSwitch(reRender, currentCommand, myThemes)) {
       themeSwitcher?.(theme[currentCommand[2]]);
     }
-  }, [arg, rerender, currentCommand]);
+  }, [arg, reRender, currentCommand]);
 
   const checkArg = () =>
     isArgInvalid(arg, "set", myThemes) ? <Usage cmd="themes" /> : null;
