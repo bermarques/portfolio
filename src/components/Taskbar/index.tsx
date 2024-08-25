@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { Wrapper } from "../styles/Footer.styled";
+import { Wrapper } from "../styles/Taskbar.styled";
 import Item from "./Item";
 import { EnumStatus, terminalContext } from "../../contexts/Terminal";
 
-const Footer = () => {
+const Taskbar = () => {
   const { status, setStatus, maximized } = useContext(terminalContext);
 
   const handleTerminal = () => {
@@ -37,4 +37,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Taskbar;

@@ -4,7 +4,7 @@ import { DefaultTheme, ThemeProvider } from "styled-components";
 import { useTheme } from "./hooks/useTheme.ts";
 import GlobalStyle from "./components/styles/GlobalStyle";
 import Terminal from "./components/Terminal";
-import Footer from "./components/Footer/index.tsx";
+import Taskbar from "./components/Taskbar/index.tsx";
 import { EnumStatus, terminalContext } from "./contexts/Terminal.tsx";
 import { termContext } from "./contexts/Term.tsx";
 
@@ -85,7 +85,7 @@ function App() {
                   setMaximized: setMaximizedTerminal,
                 }}
               >
-                <Footer />
+                <Taskbar />
                 <Terminal />
               </terminalContext.Provider>
             </termContext.Provider>

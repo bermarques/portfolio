@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ActiveDot, ItemContainer } from "../../styles/Footer.styled";
+import { ActiveDot, ItemContainer } from "../../styles/Taskbar.styled";
 import { IItem } from "./types";
 
 const Item: React.FC<IItem> = ({ image, active, onClick }) => {
