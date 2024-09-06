@@ -25,7 +25,7 @@ const Item: React.FC<IItem> = ({ image, active, onClick }) => {
 
   return (
     <ItemContainer id="terminal-item" ref={myRef} onClick={onClick}>
-      <img src={`src/assets/${image}.webp`} alt="Icon" draggable="false" />
+      <img src={`/${image}.webp`} alt="Icon" draggable="false" />
       {active && <ActiveDot />}
     </ItemContainer>
   );
