@@ -9,7 +9,7 @@ import {
 
 const Header = () => {
   return (
-    <Wrapper>
+    <Wrapper className="draggable">
       <Actions>
         <IconContainer>
           <Minus />

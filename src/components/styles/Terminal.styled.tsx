@@ -24,7 +24,7 @@ export const Container = styled.div`
     overflow: hidden;
     border-radius: 6px;
     border: 1px solid #2c2c2c;
-    margin: 20px;
+    margin: 0px;
     cursor: text;
   }
 `;
