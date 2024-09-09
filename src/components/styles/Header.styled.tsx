@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     display: none;
   }
 
+  user-select: none;
   display: flex;
   align-items: center;
   text-align: center;
