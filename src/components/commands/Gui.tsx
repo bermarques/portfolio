@@ -8,7 +8,7 @@ const Gui: React.FC = () => {
   const currentCommand = _.split(history[0], " ");
 
   if (rerender && currentCommand[0] === "gui") {
-    window.open("https://bernardomarques.dev/", "_blank");
+    window.open("https://github.com/bermarques/", "_blank");
   }
 
   return <span></span>;
